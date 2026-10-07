@@ -7,3 +7,6 @@ apps/cli/server/
 next-env.d.ts
 .DS_Store
 .env*.local
+
+# Copied from examples/starter by the CLI prepack.
+apps/cli/template/

@@ -19,7 +19,7 @@ import { renderPageMarkdown } from "@papervine/renderer/lib/page-md";
  * a local port far more often than not, so unlike the hosted route — which defaults to https
  * behind a proxy — this trusts `x-forwarded-proto` when present and otherwise assumes http.
  */
-function originOf(req: Request): string {
+export function originOf(req: Request): string {
   const host = req.headers.get("host");
   if (!host) return "";
   const proto = req.headers.get("x-forwarded-proto") ?? "http";

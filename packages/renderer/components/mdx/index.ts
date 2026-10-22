@@ -15,6 +15,7 @@ import { Icon } from "./Icon";
 import { Tooltip } from "./Tooltip";
 import { Tile } from "./Tile";
 import { Tree, FileTree } from "./Tree";
+import { Lifecycle, State, Exit } from "./Lifecycle";
 import { Color } from "./Color";
 import { GitHub } from "./GitHub";
 import { Update } from "./Update";
@@ -78,6 +79,9 @@ export const mdxComponents: MDXComponents = {
   Tree,
   FileTree, // documented alias for Tree
   Mermaid,
+  Lifecycle,
+  State,
+  Exit,
   GitHub,
 
   // Content control

@@ -4,6 +4,7 @@ import "./globals.css";
 import { loadBuildSafeConfig } from "../lib/build-safe-config";
 import { resolveTheme, themeCssVars } from "@papervine/renderer/lib/theme";
 import { originFromHost } from "@papervine/renderer/lib/origin";
+import { Favicon } from "@papervine/renderer/components/Favicon";
 
 // The CLI renders a single local docs repo (the folder `papervine dev` points at,
 // via PAPERVINE_CONTENT), so config reads come straight from the default content
@@ -44,6 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeVars }} />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Favicon favicon={config.favicon} />
       </head>
       <body>{children}</body>
     </html>

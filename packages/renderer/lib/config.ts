@@ -69,7 +69,26 @@ export const docsConfigSchema = z
       .passthrough()
       .optional()
       .catch(undefined),
-    footer: z.object({}).passthrough().optional().catch(undefined),
+    // `links` is the docs.json column list. `credit` is Papervine's own: one small line under
+    // the columns, for a "built by" link that should read as a footnote rather than a column.
+    footer: z
+      .object({
+        links: z
+          .array(
+            z
+              .object({
+                header: z.string().optional(),
+                items: z.array(z.object({ label: z.string(), href: z.string() }).passthrough()),
+              })
+              .passthrough(),
+          )
+          .optional()
+          .catch(undefined),
+        credit: z.object({ label: z.string(), href: z.string() }).passthrough().optional().catch(undefined),
+      })
+      .passthrough()
+      .optional()
+      .catch(undefined),
     // Social/SEO (SPEC §4). `metatags` is an open name→content map applied to every page —
     // the site-wide way to set `og:image`, `twitter:site`, a verification token — and page
     // frontmatter overrides it per page (see ./seo.ts). Every value is coerced to a string

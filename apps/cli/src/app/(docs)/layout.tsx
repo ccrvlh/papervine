@@ -3,6 +3,7 @@ import { buildNav } from "@papervine/renderer/lib/nav";
 import { Navbar } from "@papervine/renderer/components/Navbar";
 import { NavTabs } from "@papervine/renderer/components/NavTabs";
 import { Sidebar } from "@papervine/renderer/components/Sidebar";
+import { Footer } from "@papervine/renderer/components/Footer";
 import { SearchButton } from "@papervine/renderer/components/SearchDialog";
 import { Banner } from "@papervine/renderer/components/mdx/Banner";
 import { Assistant } from "@papervine/renderer/components/assistant/Assistant";
@@ -46,6 +47,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
         <Sidebar sections={sections} />
         <main className="min-w-0 flex-1">{children}</main>
       </div>
+      <Footer config={config} />
       {/* The panel itself. The navbar button (and Cmd-I) dispatch an event it listens for, so
           it has to be mounted whenever the launcher is. */}
       {assistantOn && <Assistant />}

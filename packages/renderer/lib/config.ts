@@ -56,7 +56,15 @@ export const docsConfigSchema = z
     navbar: z
       .object({
         links: z.array(z.object({ label: z.string(), href: z.string() }).passthrough()).optional(),
-        primary: z.object({ label: z.string(), href: z.string() }).passthrough().optional(),
+        // `type: "github"` renders a repository icon beside the theme toggle and needs no
+        // label; anything else is the labelled call-to-action button.
+        primary: z
+          .union([
+            z.object({ type: z.literal("github"), href: z.string() }).passthrough(),
+            z.object({ type: z.string().optional(), label: z.string(), href: z.string() }).passthrough(),
+          ])
+          .optional()
+          .catch(undefined),
       })
       .passthrough()
       .optional()
